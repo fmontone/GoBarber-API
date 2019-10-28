@@ -101,7 +101,7 @@ class AppointmentController {
     const appointment = await Appointment.create({
       user_id: req.userId,
       provider_id,
-      date,
+      date: hourStart,
     });
 
     /**
@@ -153,9 +153,7 @@ class AppointmentController {
 
     await appointment.save();
 
-    await Queue.add(CancellationMail.key, {
-      appointment,
-    });
+    await Queue.add(CancellationMail.key, { appointment });
 
     return res.json(appointment);
   }

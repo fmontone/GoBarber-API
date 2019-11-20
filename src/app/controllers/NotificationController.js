@@ -28,9 +28,6 @@ class NotificationController {
       { new: true }
     );
 
-    console.log('>>>>>>>>>>>>>>>>>>>', req.params.id);
-    console.log('>>>>>>>>>>>>>>>>>>>', notification);
-
     return res.json(notification);
   }
 }
